@@ -45,5 +45,8 @@
     "expo": "*",
     "react": "*",
     "react-native": "*"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^56.0.3"
   }
 }
