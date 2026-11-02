@@ -39,12 +39,14 @@ export type JpMediaThumbnailsModuleEvents = Record<string, never>;
 
 export type ThumbnailBatchResult = Record<string, string | null>;
 
+export type SystemAlbumKey = 'recent' | 'favorites' | 'videos';
+
 export type NativeAlbum = {
   id: string;
   title: string;
   count: number;
   type: 'smart' | 'user';
-  systemKey?: 'recent' | 'favorites' | 'videos';
+  systemKey?: SystemAlbumKey;
 };
 
 export type NativeGalleryAsset = {

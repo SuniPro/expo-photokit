@@ -1,7 +1,7 @@
 {
-  "name": "@suni-pro/expo-photokit",
+  "name": "@suni_pro/expo-photokit",
   "version": "0.1.0",
-  "description": "An Expo native module for accessing iOS PhotoKit albums, assets, and cached thumbnails.",
+  "description": "Native PhotoKit module for Expo on iOS",
   "private": false,
   "license": "MIT",
   "main": "./build/index.js",
@@ -15,11 +15,15 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "expo-module build",
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
     "clean": "expo-module clean",
-    "lint": "expo-module lint",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src",
     "test": "expo-module test",
-    "prepare": "expo-module prepare",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -47,6 +51,19 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "expo-module-scripts": "^56.0.3"
+    "eslint": "^9.39.4",
+    "eslint-config-expo": "~10.0.0",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-no-secrets": "^2.3.3",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-security": "^4.0.0",
+    "expo-module-scripts": "^56.0.3",
+    "prettier": "^3.8.3",
+    "typescript": "5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

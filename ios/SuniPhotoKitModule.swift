@@ -240,6 +240,72 @@ public class SuniPhotoKitModule: Module {
                 promise.resolve(url?.absoluteString)
             }
         }
+
+        AsyncFunction("getOriginalAsset") { (assetId: String, promise: Promise) in
+          let result = PHAsset.fetchAssets(
+            withLocalIdentifiers: [assetId],
+            options: nil
+          )
+
+          guard let asset = result.firstObject else {
+            promise.reject("ASSET_NOT_FOUND", "Photo asset not found")
+            return
+          }
+
+          let resources = PHAssetResource.assetResources(for: asset)
+
+          let preferredTypes: [PHAssetResourceType] = asset.mediaType == .video
+            ? [.fullSizeVideo, .video]
+            : [.fullSizePhoto, .photo, .alternatePhoto]
+
+          guard let resource = preferredTypes.compactMap({ type in
+            resources.first(where: { $0.type == type })
+          }).first else {
+            promise.reject("RESOURCE_NOT_FOUND", "Original asset resource not found")
+            return
+          }
+
+          let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("expo-photokit-originals", isDirectory: true)
+
+          do {
+            try FileManager.default.createDirectory(
+              at: directory,
+              withIntermediateDirectories: true,
+              attributes: nil
+            )
+          } catch {
+            promise.reject("DIRECTORY_ERROR", error.localizedDescription)
+            return
+          }
+
+          let originalExtension = (resource.originalFilename as NSString)
+            .pathExtension
+            .lowercased()
+
+          let fileExtension = originalExtension.isEmpty ? "bin" : originalExtension
+
+          let destination = directory
+            .appendingPathComponent(UUID().uuidString)
+            .appendingPathExtension(fileExtension)
+
+          let options = PHAssetResourceRequestOptions()
+          options.isNetworkAccessAllowed = true
+
+          PHAssetResourceManager.default().writeData(
+            for: resource,
+            toFile: destination,
+            options: options
+          ) { error in
+            if let error {
+              try? FileManager.default.removeItem(at: destination)
+              promise.reject("EXPORT_FAILED", error.localizedDescription)
+              return
+            }
+
+            promise.resolve(destination.absoluteString)
+          }
+        }
         
         AsyncFunction("startPreloading") { (
             assetIds : [String],

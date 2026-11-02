@@ -17,6 +17,8 @@ declare class SuniPhotoKitModule extends NativeModule<Record<string, never>> {
 
   getThumbnailBatch(assetIds: string[], options: ThumbnailOptions): Promise<ThumbnailBatchResult>;
 
+  getOriginalAsset(assetId: string): Promise<string>;
+
   stopPreloading(): Promise<null>;
 }
 
