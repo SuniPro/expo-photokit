@@ -1,0 +1,49 @@
+{
+  "name": "@suni-pro/expo-photokit",
+  "version": "0.1.0",
+  "description": "An Expo native module for accessing iOS PhotoKit albums, assets, and cached thumbnails.",
+  "private": false,
+  "license": "MIT",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "files": [
+    "src",
+    "build",
+    "ios",
+    "expo-module.config.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "expo",
+    "expo-module",
+    "react-native",
+    "ios",
+    "photokit",
+    "photos",
+    "gallery",
+    "thumbnail",
+    "suni"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suni-pro/expo-photokit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/suni-pro/expo-photokit/issues"
+  },
+  "homepage": "https://github.com/suni-pro/expo-photokit#readme",
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}
