@@ -1,6 +1,6 @@
 {
   "name": "@suni_pro/expo-photokit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Native PhotoKit module for Expo on iOS",
   "private": false,
   "license": "MIT",
