@@ -5,6 +5,6 @@
     "rootDir": "./src",
     "outDir": "./build",
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "build"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["build", "node_modules", "examples"]
 }

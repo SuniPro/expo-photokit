@@ -155,25 +155,47 @@ type GalleryAsset = {
 
 ## Example: Photo Gallery
 
-Build a native iOS photo gallery with album selection, cursor-based pagination, and thumbnail loading.
+Build a native iOS photo gallery with album selection, cursor-based pagination, and on-demand thumbnail loading.
 
-The example includes:
+### Features
 
 - Photo library permission handling
-- Album selection
-- Paginated asset loading
+- System and user album selection
+- Cursor-based asset pagination
 - On-demand thumbnail loading for visible assets
 - Loading states and error handling
 
-**Dependencies**
+### Usage in Your Project
+
+When using this example in your own project, import the APIs directly from the npm package:
+
+```tsx
+import SuniPhotoKitModule, {
+  getPhotoAlbums,
+  getPhotoAssetsPage,
+  PhotoThumbnailLoader,
+  requestPhotoPermission,
+  type NativeAlbum,
+} from '@suni_pro/expo-photokit';
+```
+
+> **Note:** The example source uses relative imports for internal development. Replace them with the package imports shown above when copying the example into your own project.
+
+### Dependencies
+
+Install `expo-image` to render thumbnails:
 
 ```bash
 npx expo install expo-image
 ```
 
-See the complete implementation in [`examples/GalleryExample.tsx`](./examples/GalleryExample.tsx).
+### Complete Example
 
-> This example uses only React state and React Native components. No external state management library is required.
+See the full implementation in [`examples/GalleryExample.tsx`](./examples/GalleryExample.tsx).
+
+This example uses React state and React Native components without requiring an external state management library.
+
+**Platform support:** iOS is supported. Android support is coming soon.
 
 ## Important Notes
 

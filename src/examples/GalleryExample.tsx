@@ -11,13 +11,21 @@ import {
   type ViewToken,
 } from 'react-native';
 import { Image } from 'expo-image';
-import SuniPhotoKit, {
-  getPhotoAlbums,
-  getPhotoAssetsPage,
-  PhotoThumbnailLoader,
-  requestPhotoPermission,
-  type NativeAlbum,
-} from '@suni_pro/expo-photokit';
+
+/**
+ * This example is compiled alongside the library source.
+ * Import directly from the source to avoid circular package resolution
+ * and TypeScript build output conflicts (TS5055).
+ *
+ * When using this example in your own app, import from:
+ * '@suni_pro/expo-photokit'
+ */
+import { getPhotoAssetsPage } from '../core/assets';
+import { PhotoThumbnailLoader } from '../core/thumbnails';
+import { requestPhotoPermission } from '../core/permissions';
+import { getPhotoAlbums } from '../core/albums';
+import SuniPhotoKitModule from '../SuniPhotoKitModule';
+import type { NativeAlbum } from '../SuniPhotoKit.types';
 
 type Asset = Awaited<ReturnType<typeof getPhotoAssetsPage>>['assets'][number];
 
@@ -161,7 +169,7 @@ export default function GalleryExample() {
       mounted.current = false;
       sessionRef.current = null;
 
-      void SuniPhotoKit.stopPreloading().catch(() => {});
+      void SuniPhotoKitModule.stopPreloading().catch(() => {});
     };
   }, [retryKey, selectAlbum]);
 
