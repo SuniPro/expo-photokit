@@ -12,7 +12,9 @@
     "ios",
     "expo-module.config.json",
     "README.md",
-    "LICENSE"
+    "CHANGELOG.md",
+    "LICENSE",
+    "examples"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -39,12 +41,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/suni-pro/expo-photokit.git"
+    "url": "git+https://github.com/SuniPro/expo-photokit.git"
   },
   "bugs": {
-    "url": "https://github.com/suni-pro/expo-photokit/issues"
+    "url": "https://github.com/SuniPro/expo-photokit/issues"
   },
-  "homepage": "https://github.com/suni-pro/expo-photokit#readme",
+  "homepage": "https://github.com/SuniPro/expo-photokit#readme",
   "peerDependencies": {
     "expo": "*",
     "react": "*",
@@ -65,5 +67,5 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
 }
